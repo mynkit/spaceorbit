@@ -1,0 +1,35 @@
+bpm = 100
+
+setcps (bpm/60/4)
+
+d1
+  $ mix ((|+ n 12).(|* gain 0.7))
+  $ (|- n 2)
+  $ (|- n 12)
+  $ s "superhammond/2"
+  # n "[0,5,7,10,2]"
+  # gain 0.6
+  -- # room 0.4 # pF "size" 0.9
+  # damp 1 # pF "scReverb" 0.9 # pF "ice" 0
+
+mod1 silence
+
+mod1
+  $ segment 64
+  $ pF "vibrato" (range 1 1.5 $ fast 0.5 saw)
+  # pF "vrate" (range 1 50 $ fast 0.3 rand)
+  # theta (fast 0.5 line)
+  # dis 1
+  # tremolorate (8)
+  # tremolodepth (range 0 0.5 $ slow 3 $ sine)
+  # hpf 700
+  # amp 0.4
+
+mod1 silence
+
+d2
+  $ s "SinOscSynthBend"
+  # sustain 0.1
+  # n "c6"
+  # gain 0.7
+  # theta (0.5) # dis 1
