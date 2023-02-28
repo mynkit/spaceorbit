@@ -14,8 +14,8 @@ ServerOptions.outDevices;
 
 (
 Server.default.options.inDevice_("BlackHole 2ch");
-// Server.default.options.outDevice_("BlackHole 16ch");
-Server.default.options.outDevice_("M4");
+Server.default.options.outDevice_("BlackHole 2ch");
+// Server.default.options.outDevice_("M4");
 
 ~decoder = FoaDecoderMatrix.newStereo((100).degrad, (3-sqrt(3))/2);
 
