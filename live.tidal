@@ -8,6 +8,16 @@ all $ (|* gain 1.5)
 do
   setF "rain" 0
   setF "pond" 0
+  setFm "synthDis" 1
+  setFm "synthTheta" 0
+  setFm "bird1Dis" 1
+  setFm "bird1Theta" 0
+  setFm "bird2Dis" 1
+  setFm "bird2Theta" 0
+  setFm "crowDis" 1
+  setFm "crowTheta" 0
+  setFm "doveDis" 1
+  setFm "doveTheta" 0
 
 getState "rain"
 
@@ -67,11 +77,7 @@ do
     # gain (cF 0 "rain")
 
 
-
-
-
-
-d1
+d4
   $ mix ((|+ n 12).(|* gain 0.7))
   $ (|- n 2)
   $ (|- n 12)
@@ -81,17 +87,30 @@ d1
   -- # room 0.4 # pF "size" 0.9
   # damp 1 # pF "scReverb" 0.9 # pF "ice" 0
 
-mod1 silence
+mod4 silence
 
-mod1
+mod4
   $ segment 64
   $ pF "vibrato" (range 1 1.5 $ fast 0.5 saw)
   # pF "vrate" (range 1 50 $ fast 0.3 rand)
-  # theta (fast 0.5 line)
-  # dis 1
+  -- # theta (fast 0.5 line) # dis 1
+  # theta (cF 0 "synthTheta") # dis (cF 0 "synthDis")
   # tremolorate (8)
-  # tremolodepth (range 0 0.5 $ slow 3 $ sine)
+  # tremolodepth (range 0 0.1 $ slow 3 $ sine)
   # hpf 700
-  # amp 0.4
+  # amp 0.1
 
-mod1 silence
+d5
+  $ slow 3
+  $ (|* gain (range 0.3 0.35 rand))
+  $ s "turtledove"
+  # n "f5"
+  # slide 0.12
+  # pitch1 0.1
+  # sustain 0.5
+  # room 0.1 # sz 0.6
+
+mod5
+  $ segment 64
+  $ theta (cF 0 "doveTheta") # dis (cF 0 "doveDis")
+  # amp 0.1
