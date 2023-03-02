@@ -16,7 +16,7 @@ SynthDef("background", {
 	p=PinkNoise.ar(1!2);
 	p=HPF.ar(p, 50);
 	p=LPF.ar(p, 1500);
-	Out.ar(out, p*0.05*amp);
+	Out.ar(out, p*0.2*amp);
 }, [1]).add;
 )
 )

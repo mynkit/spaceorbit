@@ -14,8 +14,8 @@ ServerOptions.outDevices;
 
 (
 Server.default.options.inDevice_("BlackHole 2ch");
-Server.default.options.outDevice_("MacBook Proのス");
-// Server.default.options.outDevice_("M4");
+// Server.default.options.outDevice_("MacBook Proのス");
+Server.default.options.outDevice_("M4");
 
 ~decoder = FoaDecoderMatrix.newStereo((100).degrad, (3-sqrt(3))/2);
 
@@ -65,7 +65,7 @@ Server.default.waitForBoot{
 		ReplaceOut.ar(out, signal)
 	}, [\ir]).add;*/
 	SynthDef("HRTF" ++ ~dirt.numChannels, { |out, theta, dis|
-		var signal, in, left, right, foa;
+		var signal, in, left, right, foa, soto, naka;
 		in = In.ar(out, ~dirt.numChannels).asArray.sum;
 		// theta is our angle on the X-Y plane and phi is our elevation
 		theta = (theta-1) * pi;
@@ -73,6 +73,12 @@ Server.default.waitForBoot{
 		foa = FoaPanB.ar(in, theta, 0);
 		// decode our signal using our decoder defined above
 		signal = FoaDecode.ar(foa,  ~decoder);
+		soto = 1 - ((1-dis)*(1-dis));
+		naka = (1-dis)*(1-dis);
+		signal = [
+			(soto*signal[0]) + (naka*in*0.95),
+			(soto*signal[1]) + (naka*in*0.95)
+		];
 		ReplaceOut.ar(out, signal)
 	}, [\ir]).add;
 
