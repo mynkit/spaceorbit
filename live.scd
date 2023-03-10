@@ -81,8 +81,8 @@ osc.sendMsg("/s_new", \background, ~backgroundNode, 1, 0, \amp, 0);
 
 (
 var osc = NetAddr.new("localhost", 57110);
-osc.sendMsg("/n_set", ~rainNode, \amp, 2);
-osc.sendMsg("/n_set", ~backgroundNode, \amp, 1);
+osc.sendMsg("/n_set", ~rainNode, \amp, 0);
+osc.sendMsg("/n_set", ~backgroundNode, \amp, 0);
 )
 
 // ---------scene1---------
@@ -108,7 +108,6 @@ osc.sendMsg("n_free", 1004);
 osc.sendMsg("n_free", 1005);
 osc.sendMsg("n_free", 1006);
 osc.sendMsg("n_free", 1007);
-osc.sendMsg("n_free", 1008);
 )
 
 // def
@@ -119,14 +118,17 @@ var osc = NetAddr.new("localhost", 57110);
 ~scene1n2 = 1004;
 ~scene1n3 = 1005;
 ~scene1n4 = 1006;
+~scene1n5 = 1007;
 
 
 osc.sendMsg("/s_new", \sine, ~scene1n1, 1, 0, \freq, 369.994, \amp, 0, \parFreq, 0.3, \pan2Freq, 0.1, \vibratoDepth, 0.3, \vibratoFreq, 3, \actave, 1, \reverb, 0.7);
 
 osc.sendMsg("/s_new", \sine, ~scene1n2, 1, 0, \freq, 329.628*2, \amp, 0, \vibratoDepth, 0.3, \vibratoFreq, 1, \actave, 1, \reverb, 0.5, \parFreq, 0.4, \pan2Freq, 0.12, \vibratoFreq, 1, \vibratoDepth, 0.1);
 osc.sendMsg("/s_new", \sine, ~scene1n3, 1, 0, \freq, 277.183*2, \amp, 0, \vibratoDepth, 0.3, \vibratoFreq, 2, \actave, 1, \reverb, 0.5, \parFreq, 0.3, \pan2Freq, 0.6, \vibratoFreq, 1, \vibratoDepth, 0.1);
-osc.sendMsg("/s_new", \sine, ~scene1n4, 1, 0, \freq, 415.305*2, \amp, 0, \vibratoDepth, 0.3, \vibratoFreq, 5, \actave, 1, \reverb, 0.5, \parFreq, 0.1, \pan2Freq, 0.2, \vibratoFreq, 1, \vibratoDepth, 0.1);
+osc.sendMsg("/s_new", \sine, ~scene1n4, 1, 0, \freq, 415.305, \amp, 0, \vibratoDepth, 0.3, \vibratoFreq, 5, \actave, 1, \reverb, 0.5, \parFreq, 0.1, \pan2Freq, 0.2, \vibratoFreq, 1, \vibratoDepth, 0.1);
+osc.sendMsg("/s_new", \sine, ~scene1n5, 1, 0, \freq, 440, \amp, 0, \vibratoDepth, 0.1, \vibratoFreq, 1.5, \actave, 1, \reverb, 0.5, \parFreq, 0.1, \pan2Freq, 0.2, \vibratoFreq, 1, \vibratoDepth, 0.1);
 )
+
 
 // play, vol control
 (
@@ -137,6 +139,7 @@ osc.sendMsg("/n_set", ~scene1n1, \amp, 1*masterVol);
 osc.sendMsg("/n_set", ~scene1n2, \amp, 1*masterVol);
 osc.sendMsg("/n_set", ~scene1n3, \amp, 1*masterVol);
 osc.sendMsg("/n_set", ~scene1n4, \amp, 1*masterVol);
+osc.sendMsg("/n_set", ~scene1n5, \amp, 1*masterVol);
 )
 
 
@@ -148,18 +151,20 @@ osc.sendMsg("/n_set", ~scene1n1, \distort, distort);
 osc.sendMsg("/n_set", ~scene1n2, \distort, distort);
 osc.sendMsg("/n_set", ~scene1n3, \distort, distort);
 osc.sendMsg("/n_set", ~scene1n4, \distort, distort);
+osc.sendMsg("/n_set", ~scene1n5, \distort, distort);
 )
 
 
 (
 var osc = NetAddr.new("localhost", 57110);
-var ice = 1;
-var parFreq = 2;
+var ice = 0.8;
+var parFreq = 0.5;
 
 osc.sendMsg("/n_set", ~scene1n1, \ice, 0.7*ice, \parFreq, 2*parFreq);
 osc.sendMsg("/n_set", ~scene1n2, \ice, 0.3*ice, \parFreq, 4*parFreq);
 osc.sendMsg("/n_set", ~scene1n3, \ice, 0.5*ice, \parFreq, 3*parFreq);
 osc.sendMsg("/n_set", ~scene1n4, \ice, 0.8*ice, \parFreq, 1*parFreq);
+osc.sendMsg("/n_set", ~scene1n5, \ice, 0.8*ice, \parFreq, 1*parFreq);
 )
 
 (
@@ -169,23 +174,25 @@ osc.sendMsg("/n_set", ~scene1n1, \freq, 369.994/1, \amp, 1);
 osc.sendMsg("/n_set", ~scene1n2, \freq, 329.628/2, \amp, 1);
 osc.sendMsg("/n_set", ~scene1n3, \freq, 277.183/1, \amp, 1);
 osc.sendMsg("/n_set", ~scene1n4, \freq, 415.305/4, \amp, 1);
+osc.sendMsg("/n_set", ~scene1n4, \freq, 440/8, \amp, 1);
 )
 
 (
 var osc = NetAddr.new("localhost", 57110);
-var vibrato = 0.2;
+var vibrato = 0.7;
 
 osc.sendMsg("/n_set", ~scene1n1, \vibratoDepth, 1*vibrato, \vibratoFreq, 1);
 osc.sendMsg("/n_set", ~scene1n2, \vibratoDepth, 0.7*vibrato, \vibratoFreq, 3);
 osc.sendMsg("/n_set", ~scene1n3, \vibratoDepth, 0.5*vibrato, \vibratoFreq, 2);
 osc.sendMsg("/n_set", ~scene1n4, \vibratoDepth, 0.6*vibrato, \vibratoFreq, 5);
+osc.sendMsg("/n_set", ~scene1n5, \vibratoDepth, 0.4*vibrato, \vibratoFreq, 3.5);
 )
 
 
 // fire
 
 
-Ndef(\fire).play(vol: 5, numChannels: 2, fadeTime: 1);
+Ndef(\fire).play(vol: 6, numChannels: 2, fadeTime: 1);
 Ndef(\fire).stop;
 Ndef(\fire).clear;
 (
@@ -200,8 +207,22 @@ Ndef(\fire).set(\amp, 3.0, \freq, 0.8, \lpf, 100000, \hpf, 800);
 Ndef(\fire).set(\amp, 0);
 
 
-
 // ---------scene2---------
+
+(
+var osc = NetAddr.new("localhost", 57110);
+var masterVol = 1;
+var ice = 0.8;
+
+osc.sendMsg("/n_set", ~scene1n1, \vibratoDepth, \freq, 369.994, \amp, masterVol, \parFreq, 0.3, \pan2Freq, 0.1, \vibratoDepth, 0.3, \vibratoFreq, 3, \actave, 1, \reverb, 0.7, \ice, ice);
+osc.sendMsg("/n_set", ~scene1n2, \freq, 329.628*2, \amp, masterVol, \vibratoDepth, 0.3, \vibratoFreq, 1, \actave, 1, \reverb, 0.5, \parFreq, 0.4, \pan2Freq, 0.12, \vibratoFreq, 1, \vibratoDepth, 0.1, \ice, ice);
+osc.sendMsg("/n_set", ~scene1n3, \freq, 277.183*2, \amp, masterVol, \vibratoDepth, 0.3, \vibratoFreq, 2, \actave, 1, \reverb, 0.5, \parFreq, 0.3, \pan2Freq, 0.6, \vibratoFreq, 1, \vibratoDepth, 0.1, \ice, ice);
+osc.sendMsg("/n_set", ~scene1n4, \freq, 415.305, \amp, masterVol, \vibratoDepth, 0.3, \vibratoFreq, 5, \actave, 1, \reverb, 0.5, \parFreq, 0.1, \pan2Freq, 0.2, \vibratoFreq, 1, \vibratoDepth, 0.1, \ice, ice);
+osc.sendMsg("/n_set", ~scene1n5, \freq, 440, \amp, masterVol, \vibratoDepth, 0.1, \vibratoFreq, 1.5, \actave, 1, \reverb, 0.5, \parFreq, 0.1, \pan2Freq, 0.2, \vibratoFreq, 1, \vibratoDepth, 0.1, \ice, ice);
+)
+
+
+// ---------scene3---------
 
 // node free
 (
@@ -218,9 +239,9 @@ var osc = NetAddr.new("localhost", 57110);
 ~scene2n2 = 1004;
 
 
-osc.sendMsg("/s_new", \sine2, ~scene2n1, 1, 0, \freq, 493.883, \amp, 0, \parFreq, 1.5, \pan2Freq, 1, \vibratoDepth, 0.3, \vibratoFreq, 3, \actave, 1, \reverb, 0.7);
+osc.sendMsg("/s_new", \sine, ~scene2n1, 1, 0, \freq, 493.883, \amp, 0, \parFreq, 1.5, \pan2Freq, 1, \vibratoDepth, 0.3, \vibratoFreq, 3, \actave, 1, \reverb, 0.7);
 
-osc.sendMsg("/s_new", \sine2, ~scene2n2, 1, 0, \freq, 523.251/2, \amp, 0, \vibratoDepth, 0.3, \vibratoFreq, 1, \actave, 1, \reverb, 0.5, \parFreq, 90, \pan2Freq, 110, \vibratoFreq, 1, \vibratoDepth, 0.1);
+osc.sendMsg("/s_new", \sine, ~scene2n2, 1, 0, \freq, 523.251/2, \amp, 0, \vibratoDepth, 0.3, \vibratoFreq, 1, \actave, 1, \reverb, 0.5, \parFreq, 90, \pan2Freq, 110, \vibratoFreq, 1, \vibratoDepth, 0.1);
 
 )
 

@@ -119,7 +119,7 @@ Server.default.waitForBoot{
 
 		dry = signal;
 		right = CombL.ar(dry, maxDelayTime*2, delaytime.lag(0.05)*2, decayTime);
-		right = LPF.ar(right, pingponglpf);
+		// right = LPF.ar(right, pingponglpf);
 		left = DelayN.ar(dry + right, maxDelayTime, delaytime.lag(0.05));
 		signal = NumChannels.ar(signal + [left*delayAmp, right*delayAmp], ~dirt.numChannels);
 
@@ -199,8 +199,8 @@ Server.default.waitForBoot{
 		sound = perc * 0.5 * SinOsc.ar(freq*percf, 2pi.rand) * XLine.ar(1,1e-6,2*decay+1) + sound;
 		sound = sound + BAllPass.ar(sound, 1000*LFTri.kr(vrate,0,vibrato/2,1));
 		// panning
-		sound = Pan2.ar(sound, FSinOsc.kr(1.43));
-		Out.ar(out, sound*env);
+		// sound = Pan2.ar(sound, FSinOsc.kr(1.43));
+		Out.ar(out, DirtPan.ar(sound, ~dirt.numChannels, pan, env));
 	}).add;
 	SynthDef("toumeiSynth", {
 		arg out, sustain=1, decay=0, pan, freq, vibrato=0.5, vrate=7, voice=0, perc=0, percf=2, accelerate=0, slide=0, sustainpedal=0.5;
