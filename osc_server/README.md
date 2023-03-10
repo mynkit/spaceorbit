@@ -1,4 +1,4 @@
-# osc-web-interface
+# osc_server
 
 ## web interface
 
@@ -13,7 +13,7 @@ cp .env.example .env # Then edit the `.env` file.
 ```
 
 ```sh
-HOST=0.0.0.0 npm start
+HTTPS=true HOST=0.0.0.0 npm start
 ```
 
 private ipの取得(Mac)

@@ -28,6 +28,7 @@ do
   setFm "doveIsMute" 0
   setFm "doveAmp" 1
 
+getStatem "synthTheta"
 
 do
   d1
