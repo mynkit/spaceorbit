@@ -5,7 +5,11 @@ name = "pypi"
 
 [packages]
 python-osc = "*"
+websocket-server = "*"
 numpy = "*"
+pandas = "*"
+websocket-client = "*"
+rel = "*"
 
 [dev-packages]
 
