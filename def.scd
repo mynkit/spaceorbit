@@ -158,9 +158,9 @@ Server.default.waitForBoot{
 		sound = (sig1 + sig2) * 0.5;
 		parFreq = 0.8 + EnvGen.ar(Env.linen(0, 0, 0.6, 10, -7), timeScale:sustain);
 		// pan = EnvGen.ar(Env.linen(0, 0, 0.6, (pan), 1), timeScale:sustain); // pan slide
-		// sound = sound*LFPar.kr(parFreq); // tremoro
+		sound = sound*LFPar.kr(parFreq); // tremoro
 		// panning
-		sound = Pan2.ar(sound, FSinOsc.kr(1.43));
+		// sound = Pan2.ar(sound, FSinOsc.kr(1.43));
 		env = EnvGen.ar(Env.linen(0, 0, 0.6, 1, -2), timeScale:sustain, doneAction:2);
 		OffsetOut.ar(out, sound*env);
 	}).add;
