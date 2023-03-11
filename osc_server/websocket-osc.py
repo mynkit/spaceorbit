@@ -29,19 +29,21 @@ while True:
         print("receive data : {} ".format(txt))
         #clientにOKを送信
         # client.sendall('OK\n'.encode())
-        if ',' in txt:
-          x, y, z = txt.split(',')
-          x = float(x)
-          y = float(y)
-          z = float(z)
-          if z != 0:
-            theta = math.atan(y / z) / math.pi
-          else:
-            if y<0:
-              theta = -0.5
+        try:
+            x, y, z = txt.split(',')
+            x = float(x)
+            y = float(y)
+            z = float(z)
+            if z != 0:
+              theta = math.atan(y / z) / math.pi
             else:
-              theta = 0.5
-          client_to_tidalm.send_message('/ctrl', ['synthTheta', theta])
+              if y<0:
+                theta = -0.5
+              else:
+                theta = 0.5
+            client_to_tidalm.send_message('/ctrl', ['synthTheta', theta])
+        except:
+           pass
 
 
 
