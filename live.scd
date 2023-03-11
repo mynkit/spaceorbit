@@ -81,8 +81,8 @@ osc.sendMsg("/s_new", \background, ~backgroundNode, 1, 0, \amp, 0);
 
 (
 var osc = NetAddr.new("localhost", 57110);
-osc.sendMsg("/n_set", ~rainNode, \amp, 0);
-osc.sendMsg("/n_set", ~backgroundNode, \amp, 0.0);
+osc.sendMsg("/n_set", ~rainNode, \amp, 1.5);
+osc.sendMsg("/n_set", ~backgroundNode, \amp, 0.5);
 )
 
 // ---------scene1---------
@@ -234,8 +234,8 @@ osc.sendMsg("/n_set", ~scene1n5, \freq, 440, \amp, masterVol, \vibratoDepth, 0.1
 (
 var osc = NetAddr.new("localhost", 57110);
 osc.sendMsg("n_free", 1002);
-osc.sendMsg("n_free", 1003);
-osc.sendMsg("n_free", 1004);
+osc.sendMsg("n_free", 1006);
+osc.sendMsg("n_free", 1007);
 )
 
 (
