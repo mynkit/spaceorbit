@@ -259,10 +259,10 @@ var masterVol = 1;
 var ice = 0.2;
 
 
-osc.sendMsg("/n_set", ~backgroundNode, \amp, 1.5);
+osc.sendMsg("/n_set", ~backgroundNode, \amp, 0.5*masterVol);
 
-osc.sendMsg("/n_set", ~scene4n1, \vibratoDepth, 0.3, \freq, 528, \amp, 1, \parFreq, 0.3, \pan2Freq, 0.1, \vibratoDepth, 0.01, \vibratoFreq, 3, \actave, 1, \reverb, 0.7, \ice, ice);
-osc.sendMsg("/n_set", ~scene4n2, \freq, 396, \amp, 1, \vibratoDepth, 0.3, \vibratoFreq, 1, \actave, 1, \reverb, 0.5, \parFreq, 0.4, \pan2Freq, 0.12, \vibratoFreq, 1, \vibratoDepth, 0.01, \ice, ice);
+osc.sendMsg("/n_set", ~scene4n1, \vibratoDepth, 0.3, \freq, 528, \amp, 1*masterVol, \parFreq, 0.3, \pan2Freq, 0.1, \vibratoDepth, 0.01, \vibratoFreq, 3, \actave, 1, \reverb, 0.7, \ice, ice);
+osc.sendMsg("/n_set", ~scene4n2, \freq, 396, \amp, 1*masterVol, \vibratoDepth, 0.3, \vibratoFreq, 1, \actave, 1, \reverb, 0.5, \parFreq, 0.4, \pan2Freq, 0.12, \vibratoFreq, 1, \vibratoDepth, 0.01, \ice, ice);
 )
 
 
