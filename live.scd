@@ -174,7 +174,7 @@ osc.sendMsg("/n_set", ~scene1n1, \freq, 369.994/1, \amp, 1);
 osc.sendMsg("/n_set", ~scene1n2, \freq, 329.628/2, \amp, 1);
 osc.sendMsg("/n_set", ~scene1n3, \freq, 277.183/1, \amp, 1);
 osc.sendMsg("/n_set", ~scene1n4, \freq, 415.305/4, \amp, 1);
-osc.sendMsg("/n_set", ~scene1n4, \freq, 440/8, \amp, 1);
+osc.sendMsg("/n_set", ~scene1n5, \freq, 440/8, \amp, 1);
 )
 
 (
