@@ -136,10 +136,10 @@ var osc = NetAddr.new("localhost", 57110);
 var masterVol = 1.0;
 
 osc.sendMsg("/n_set", ~scene1n1, \amp, 1*masterVol);
-osc.sendMsg("/n_set", ~scene1n2, \amp, 1*masterVol);
-osc.sendMsg("/n_set", ~scene1n3, \amp, 1*masterVol);
-osc.sendMsg("/n_set", ~scene1n4, \amp, 1*masterVol);
-osc.sendMsg("/n_set", ~scene1n5, \amp, 1*masterVol);
+osc.sendMsg("/n_set", ~scene1n2, \amp, 0*masterVol);
+osc.sendMsg("/n_set", ~scene1n3, \amp, 0*masterVol);
+osc.sendMsg("/n_set", ~scene1n4, \amp, 0*masterVol);
+osc.sendMsg("/n_set", ~scene1n5, \amp, 0*masterVol);
 )
 
 
@@ -179,7 +179,7 @@ osc.sendMsg("/n_set", ~scene1n5, \freq, 440/8, \amp, 1);
 
 (
 var osc = NetAddr.new("localhost", 57110);
-var vibrato = 0.4;
+var vibrato = 1;
 
 osc.sendMsg("/n_set", ~scene1n1, \vibratoDepth, 1*vibrato, \vibratoFreq, 1);
 osc.sendMsg("/n_set", ~scene1n2, \vibratoDepth, 0.7*vibrato, \vibratoFreq, 3);
@@ -211,10 +211,10 @@ Ndef(\fire).set(\amp, 0);
 
 (
 var osc = NetAddr.new("localhost", 57110);
-var masterVol = 1;
+var masterVol = 0;
 var ice = 0.8;
 
-osc.sendMsg("/n_set", ~scene1n1, \vibratoDepth, \freq, 369.994, \amp, masterVol, \parFreq, 0.3, \pan2Freq, 0.1, \vibratoDepth, 0.3, \vibratoFreq, 3, \actave, 1, \reverb, 0.7, \ice, ice);
+osc.sendMsg("/n_set", ~scene1n1, \freq, 369.994, \amp, masterVol, \parFreq, 0.3, \pan2Freq, 0.1, \vibratoDepth, 0.3, \vibratoFreq, 3, \actave, 1, \reverb, 0.7, \ice, ice);
 osc.sendMsg("/n_set", ~scene1n2, \freq, 329.628*2, \amp, masterVol, \vibratoDepth, 0.3, \vibratoFreq, 1, \actave, 1, \reverb, 0.5, \parFreq, 0.4, \pan2Freq, 0.12, \vibratoFreq, 1, \vibratoDepth, 0.1, \ice, ice);
 osc.sendMsg("/n_set", ~scene1n3, \freq, 277.183*2, \amp, masterVol, \vibratoDepth, 0.3, \vibratoFreq, 2, \actave, 1, \reverb, 0.5, \parFreq, 0.3, \pan2Freq, 0.6, \vibratoFreq, 1, \vibratoDepth, 0.1, \ice, ice);
 osc.sendMsg("/n_set", ~scene1n4, \freq, 415.305, \amp, masterVol, \vibratoDepth, 0.3, \vibratoFreq, 5, \actave, 1, \reverb, 0.5, \parFreq, 0.1, \pan2Freq, 0.2, \vibratoFreq, 1, \vibratoDepth, 0.1, \ice, ice);
@@ -255,7 +255,7 @@ osc.sendMsg("/s_new", \sine, ~scene4n2, 1, 0, \freq, 396, \amp, 0, \vibratoDepth
 (
 var osc = NetAddr.new("localhost", 57110);
 
-var masterVol = 1;
+var masterVol = 0;
 var ice = 0.2;
 
 
